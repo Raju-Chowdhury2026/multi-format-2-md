@@ -1,0 +1,11 @@
+markitdown[pdf,docx,pptx,xlsx,xls]
+markitdown-ocr
+openai
+fastapi
+uvicorn
+python-multipart
+tiktoken
+supabase
+python-dotenv
+psycopg[binary]
+pytest

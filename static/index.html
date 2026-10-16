@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MD Creator</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <p class="mark">MD Creator</p>
+      <h1>Documents in. Markdown out.</h1>
+    </div>
+    <p class="lede">Headings, lists, tables, and links stay intact. The Markdown uses fewer tokens than the file you would otherwise send.</p>
+  </header>
+
+  <div class="shell">
+    <aside class="history" aria-labelledby="history-title">
+      <div class="history-head">
+        <h2 id="history-title">History</h2>
+        <button type="button" id="refresh" class="text-button">Refresh</button>
+      </div>
+      <ul id="history-list" class="history-list"></ul>
+      <p id="history-empty" class="empty">No conversions yet.</p>
+      <p id="history-error" class="banner" hidden></p>
+    </aside>
+
+    <main>
+      <form id="convert-form" class="drop" aria-label="Convert a file">
+        <label class="drop-target" id="drop-target">
+          <input id="file" name="file" type="file" accept=".pdf,.docx,.pptx,.xlsx,.xls,.html,.htm,.csv,.json,.xml,.png,.jpg,.jpeg,.gif,.webp,.bmp,.tif,.tiff">
+          <span id="file-label">Drop a PDF, Office file, HTML, data file, or image</span>
+          <span class="hint">25 MB maximum. Nothing in the file is summarized.</span>
+        </label>
+        <button id="convert" type="submit" disabled>Convert</button>
+      </form>
+
+      <p id="form-error" class="banner" hidden></p>
+
+      <section id="result" class="result" hidden>
+        <div class="result-head">
+          <div>
+            <p id="result-name" class="filename"></p>
+            <p id="result-note" class="hint"></p>
+          </div>
+          <div class="actions">
+            <div class="toggle" role="tablist" aria-label="Markdown view">
+              <button type="button" id="tab-preview" class="tab is-on" role="tab" aria-selected="true">Preview</button>
+              <button type="button" id="tab-raw" class="tab" role="tab" aria-selected="false">Markdown</button>
+            </div>
+            <a id="download" class="button" href="#">Download</a>
+          </div>
+        </div>
+        <p id="result-warning" class="banner" hidden></p>
+        <div class="stats" aria-live="polite">
+          <article>
+            <p class="stat-label">Source tokens</p>
+            <p id="stat-source" class="stat-value">—</p>
+          </article>
+          <article>
+            <p class="stat-label">Markdown tokens</p>
+            <p id="stat-markdown" class="stat-value">—</p>
+          </article>
+          <article>
+            <p class="stat-label">Savings</p>
+            <p id="stat-savings" class="stat-value accent">—</p>
+          </article>
+        </div>
+        <p class="estimate">Token counts are estimates from the cl100k tokenizer.</p>
+        <div id="preview" class="paper"></div>
+        <pre id="raw" class="paper raw" hidden></pre>
+      </section>
+    </main>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
